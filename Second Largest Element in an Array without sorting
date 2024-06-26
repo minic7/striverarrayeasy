@@ -1,0 +1,17 @@
+class Solution:
+	def print2largest(self,arr, n):
+		# code here
+		if len(arr)<2:
+		    return -1
+		largest=arr[0]
+		slargest=float('-inf')
+		for i in arr:
+		    if i>largest:
+		        slargest=largest
+		        largest=i
+	        elif largest>i>slargest:
+	            slargest=i
+        if slargest!=float('-inf'):
+            return slargest
+        else:
+            return -1
