@@ -76,3 +76,28 @@ while j < n:
 print(maxlen)
 print(a[start:end + 1])
 
+#in gfg editor
+
+class Solution:
+    def lenOfLongSubarr (self, arr, n, k) : 
+        #Complete the function
+        d = {}
+        maxlen = 0
+        sum = 0
+        
+        for i in range(n):
+            sum += arr[i]
+            
+            if sum == k:
+                maxlen = i + 1
+            
+            rem = sum - k
+            if rem in d:
+                length = i - d[rem]
+                maxlen = max(maxlen, length)
+            if sum not in d:
+                d[sum] = i
+        
+        return maxlen
+    
+
