@@ -1,4 +1,5 @@
 #this is using dictionary and TC:O(N) :it can handle both positive and negative cases
+#this is the optimal approach for array having positive,negative and zeroes
 
 arr = list(map(int, input().split()))
 k = 3
@@ -21,7 +22,7 @@ for i in range(len(arr)):
             maxlen = length
             start = d[rem] + 1
             end = i
-    if sum not in d:  # Only store the first occurrence of each sum
+    if sum not in d:  # Only store the first occurrence of each sum-->writing this line is important like this only otherwise it will insert everything in d[sum]=i
         d[sum] = i
 
 print(maxlen)
@@ -29,3 +30,49 @@ if start != -1 and end != -1:
     print(arr[start:end + 1])
 else:
     print("No subarray found")
+
+#striver said this is better only for the optimal cases not even zeroes,but negative it works
+maxlen = 0
+i=0
+j=0
+sum=a[0]
+n=len(a)
+while j<n:
+  while i<=j and sum>k:
+    sum-=a[i]
+    i+=1
+  if sum==k:
+    maxlen=max(maxlen,j-i+1)
+  j+=1
+  if j<n:
+    sum+=a[j] 
+print(maxlen)
+
+#Now to find the subarray modify a little bit
+a = list(map(int, input().split()))
+k = 3
+sum = 0
+maxlen = 0
+i = 0
+j = 0
+sum = a[0]
+n = len(a)
+start = 0
+end = 0
+
+while j < n:
+    while i <= j and sum > k:
+        sum -= a[i]
+        i += 1
+    if sum == k:
+        if j - i + 1 > maxlen:
+            maxlen = j - i + 1
+            start = i
+            end = j
+    j += 1
+    if j < n:
+        sum += a[j]
+
+print(maxlen)
+print(a[start:end + 1])
+
