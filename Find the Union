@@ -1,0 +1,15 @@
+#union of array using set TC:(n1 logn)+(n2 log n)+O(n1+n2)
+arr1 = list(map(int, input().split()))
+arr2 = list(map(int, input().split()))
+
+# Convert arrays to sets to remove duplicates and find the intersection
+set1 = set(arr1)
+set2 = set(arr2)
+
+# Find the intersection of two sets
+intersection = set1.union(set2)
+
+# Convert the result back to a list if needed
+intersection = list(intersection)
+
+print(intersection)
